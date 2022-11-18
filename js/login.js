@@ -6,7 +6,7 @@ $("#login").click(function () {
         data: $("#formlogin").serialize(),
         success: function (msg) {
             if (msg["success"]) {
-                $(location).attr("href", "/php_guvi/profile.html?");
+                $(location).attr("href", "/php_guvi/profile.html");
             }
         },
         error: function (message) {

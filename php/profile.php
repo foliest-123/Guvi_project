@@ -40,6 +40,8 @@ $result = $conn->query($sql);
 
 $pass=array();
 
+
+//i am not perform get that specific value so that i give manual data where it stored on mongodb
 $data = $collections->findOne(["name" => "hari"]);
 foreach ($data as $key => $value) {
     // echo "$key = $value";
