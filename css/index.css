@@ -1,0 +1,11 @@
+#main{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container{
+    padding: 10px;
+}
