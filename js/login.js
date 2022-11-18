@@ -7,6 +7,7 @@ $("#login").click(function () {
         success: function (msg) {
             if (msg["success"]) {
                 $(location).attr("href", "/php_guvi/profile.html");
+                localStorage.setItem("key",msg["mail"]);
             }
         },
         error: function (message) {

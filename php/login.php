@@ -35,7 +35,8 @@
  header('Content-Type: application/json');
  header('HTTP/1.1 200 OK');
  $response = array(
-     "success" => $success   
+     "success" => $success,
+     "mail" => $email_id
     
     );
  echo json_encode($response);

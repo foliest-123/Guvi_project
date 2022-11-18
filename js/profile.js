@@ -1,36 +1,24 @@
 
 
 
-function call(){
+$(document).ready(function(){
 $.ajax({
     url: 'php/profile.php',
-    type: "GET",
-    success: function (data) {
-        console.log(JSON.parse(data));
-        var d=(JSON.parse(data));
-        console.log(d.name);   
-        for (const [key, value] of Object.entries(d)) {
-            $(`input[name=${key}]`).val(value);
-            console.log(`${value}`)
-          }
+    type: "post",
+    data: {"email": localStorage.getItem("key")},
+    success: function (response) {
+      $('input[name="name"]').val(response["name"]);
+      $('input[name="age"]').val(response["age"]);
+      $('input[name="currenteducation"]').val(response["currenteducation"]);
+      $('input[name="gender"]').val(response["gender"]);
+      $('input[name="phoneno"]').val(response["phno"]);
+      $('input[name="address"]').val(response["address"]);
      
     },
       // Error handling 
     error: function (error) {
-        console.log(`Error ${error}`);
+        console.log(JSON.stringify(error));
     }
-});
-}
-call()
 
-$.ajax({
-  method: "POST",
-  url: "php/profile.php",
-  data: $("#form").serialize(),
-  success: function (msg) {
-      console.log(msg);
-  },
-  error: function (message) {
-      console.log(message);
-  }
+});
 });

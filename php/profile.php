@@ -20,34 +20,36 @@ $db = $client->register_details;
 
 $collections = $db->user_details;
 
-// $email = $_POST["email_id"];
+$email = $_POST["email"];
 $servername = "localhost";
 $username = "root";
 $dbpassword = "1234";
 
-$email=$_POST['email'];
+// // Create connection
+// $conn = new mysqli($servername, $username, $dbpassword, "guvi");
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+// $sql = "select * from user_login where email_id = '$email'";
+// $result = $conn->query($sql);
 
-// Create connection
-$conn = new mysqli($servername, $username, $dbpassword, "guvi");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-$sql = "select * from user_login where email_id = '$email'";
-$result = $conn->query($sql);
-
-
-
-$pass=array();
 
 
 //i am not perform get that specific value so that i give manual data where it stored on mongodb
-$data = $collections->findOne(["name" => "hari"]);
-foreach ($data as $key => $value) {
-    // echo "$key = $value";
-    
+$res =  $collections->find(["email" => $email],['limit'=>1]);
+foreach ($res as $document) {
+    $data = array(
+        "name" => $document["name"],
+        "age" => $document["age"],
+        "gender" => $document["gender"],
+        "address" => $document["address"],
+        "currenteducation" => $document["currenteducation"],
+        "phno" => $document["phoneno"]
+    ); 
 }
 $response = $data;
-echo json_encode($response)
+header('Content-type: application/json');
+echo json_encode($response);
 
 ?>
