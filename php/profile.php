@@ -36,7 +36,6 @@ $dbpassword = "1234";
 
 
 
-//i am not perform get that specific value so that i give manual data where it stored on mongodb
 $res =  $collections->find(["email" => $email],['limit'=>1]);
 foreach ($res as $document) {
     $data = array(
