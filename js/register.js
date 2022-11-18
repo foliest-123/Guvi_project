@@ -15,17 +15,7 @@ $("#register").click(function () {
     var phno_regex = /([0-9])/;
     var age_regex = /([0-9])/;
 
-
-    //    console.log(email);
-
-    // if(phno_regex.test(phno)==false){
-    //     $("#msg").append("Numeric only valid");
-    //     return false;
-    // }
-    // if(age_regex.test(age)==false || age.length > 2){
-    //     $("#msg").append("Numeric only valid");
-    //     return false;
-    // }
+ 
     if (email_regex.test(email) == false) {
        $("#msgem").appendTo(".error");
         
@@ -67,11 +57,13 @@ function data_post() {
         data: $("#form").serialize(),
         success: function (msg) {
             console.log(msg);
+            
         },
         error: function (message) {
             console.log(message);
         }
     });
+    $(location).attr("href","../login.html");
 
 
 
